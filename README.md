@@ -29,4 +29,108 @@ of Airbnb, ensuring a smooth experience for users and hosts.
 - **Docker**: Containerization tool for consistent development and deployment environments.  
 - **CI/CD Pipelines**: Automated pipelines for testing and deploying code changes.
 
+## Database Design
+
+This section outlines the core entities and relationships that structure the Airbnb Clone backend.
+
+### Key Entities and Their Fields
+
+#### 1. **User**
+
+Represents both guests and hosts.
+
+| Field           | Description                         |
+| --------------- | ----------------------------------- |
+| `id`            | Unique identifier for each user     |
+| `name`          | Full name of the user               |
+| `email`         | Unique email address                |
+| `password_hash` | Securely stored password hash       |
+| `is_host`       | Boolean indicating if user can host |
+
+**Relationships**:
+
+* A user can own multiple properties.
+* A user can book multiple properties.
+* A user can leave multiple reviews.
+* A user can make multiple payments.
+
+### 2. **Property**
+
+Represents a place listed by a host.
+
+| Field         | Description                            |
+| ------------- | -------------------------------------- |
+| `id`          | Unique identifier for the property     |
+| `title`       | Name or title of the property          |
+| `description` | Detailed description of the property   |
+| `location`    | City, state, or address                |
+| `price`       | Price per night                        |
+| `host_id`     | Foreign key linking to the owning user |
+
+**Relationships**:
+
+* A property is owned by one user (host).
+* A property can have multiple bookings.
+* A property can have multiple reviews.
+
+### 3. **Booking**
+
+Represents a reservation made by a guest.
+
+| Field         | Description                                 |
+| ------------- | ------------------------------------------- |
+| `id`          | Unique identifier for the booking           |
+| `user_id`     | Foreign key to the guest making the booking |
+| `property_id` | Foreign key to the booked property          |
+| `start_date`  | Start date of the booking                   |
+| `end_date`    | End date of the booking                     |
+| `status`      | Status (e.g., pending, confirmed, canceled) |
+
+**Relationships**:
+
+* A booking is made by one user (guest).
+* A booking is for one property.
+
+### 4. **Review**
+
+Represents user feedback on a property.
+
+| Field         | Description                          |
+| ------------- | ------------------------------------ |
+| `id`          | Unique identifier for the review     |
+| `user_id`     | Foreign key to the reviewer          |
+| `property_id` | Foreign key to the reviewed property |
+| `rating`      | Numeric rating (e.g., 1 to 5)        |
+| `comment`     | Text feedback provided by the user   |
+
+**Relationships**:
+
+* A review is written by one user for one property.
+
+### 5. **Payment**
+
+Represents a transaction made for a booking.
+
+| Field        | Description                                  |
+| ------------ | -------------------------------------------- |
+| `id`         | Unique identifier for the payment            |
+| `user_id`    | Foreign key to the user who made the payment |
+| `booking_id` | Foreign key to the associated booking        |
+| `amount`     | Total amount paid                            |
+| `status`     | Payment status (e.g., completed, failed)     |
+
+**Relationships**:
+
+* A payment is made by one user.
+* A payment is linked to one booking.
+
+### Entity Relationship Summary
+
+* A **User** can own many **Properties**.
+* A **User** can make many **Bookings**.
+* A **Property** can have many **Bookings** and many **Reviews**.
+* A **User** can write many **Reviews**.
+* A **Booking** is associated with one **Property**, one **User**, and one **Payment**.
+* A **Payment** is linked to a single **Booking** and made by one **User**.
+
 
