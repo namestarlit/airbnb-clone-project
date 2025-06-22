@@ -148,32 +148,32 @@ Represents a transaction made for a booking.
 This section outlines the core features implemented in the Airbnb Clone project, each designed to replicate a functional 
 and seamless rental platform experience for both hosts and guests.
 
-#### 1. **User Management**
+### 1. **User Management**
 
 Handles user registration, login, authentication, and profile updates. It ensures secure access control and allows users to 
 operate as guests or hosts depending on their account settings.
 
-#### 2. **Property Management**
+### 2. **Property Management**
 
 Enables hosts to create, update, and delete property listings. Each property includes essential details such as title, description, 
 location, price, and availability, forming the backbone of the platform's rental inventory.
 
-#### 3. **Booking System**
+### 3. **Booking System**
 
 Allows guests to book available properties for specific dates. It manages availability checks, booking statuses 
 (pending, confirmed, canceled), and prevents overlapping reservations to maintain booking integrity.
 
-#### 4. **Payment Processing**
+### 4. **Payment Processing**
 
 Facilitates secure transactions between guests and the platform. This feature ensures that bookings are only confirmed once payments 
 are successfully completed, maintaining financial accountability.
 
-#### 5. **Review System**
+### 5. **Review System**
 
 Lets guests provide feedback on properties they’ve stayed at. Reviews include ratings and comments, helping future guests make 
 informed decisions and encouraging hosts to maintain high standards.
 
-#### 6. **Data Optimization**
+### 6. **Data Optimization**
 
 Implements database indexing, query optimization, and caching strategies to improve performance and scalability. This ensures fast 
 data retrieval even as the system scales with more users, properties, and bookings.
@@ -183,14 +183,14 @@ data retrieval even as the system scales with more users, properties, and bookin
 
 Security is a critical component of the Airbnb Clone project to protect sensitive user data, ensure safe financial transactions, and maintain system integrity. The following measures will be implemented to secure the backend APIs:
 
-#### 1. **Authentication**
+### 1. **Authentication**
 
 All API endpoints will be protected using **token-based authentication** (e.g., JSON Web Tokens - JWT). This ensures that only 
 verified users can access protected resources, such as user profiles, bookings, or property listings.
 
 **Why it matters**: Prevents unauthorized access to user accounts and ensures secure user identification across sessions.
 
-#### 2. **Authorization**
+### 2. **Authorization**
 
 Role-based access control (RBAC) will be enforced to restrict actions based on user roles (e.g., guest vs host). For example, 
 only hosts can create or manage properties, and only users who made a booking can leave a review.
@@ -198,28 +198,28 @@ only hosts can create or manage properties, and only users who made a booking ca
 **Why it matters**: Ensures that users can only perform actions they are permitted to, protecting data integrity and enforcing 
 business logic.
 
-#### 3. **Rate Limiting**
+### 3. **Rate Limiting**
 
 Rate limiting will be applied to critical endpoints (e.g., login, registration, booking) to prevent brute force attacks and abuse. 
 Tools like Django Ratelimit or API gateway-level controls will be used.
 
 **Why it matters**: Helps prevent denial-of-service (DoS) attacks, brute force login attempts, and API abuse.
 
-#### 4. **Input Validation & Sanitization**
+### 4. **Input Validation & Sanitization**
 
 All user input will be validated and sanitized to guard against common vulnerabilities such as SQL injection, cross-site scripting 
 (XSS), and malicious file uploads.
 
 **Why it matters**: Ensures the system can’t be manipulated or compromised through invalid or dangerous input.
 
-#### 5. **Secure Payments**
+### 5. **Secure Payments**
 
 Sensitive operations such as payments will be handled through secure, PCI-compliant third-party services (e.g., Stripe or Flutterwave).
 Transaction data will be validated and recorded securely, without storing raw card data.
 
 **Why it matters**: Protects financial information, builds user trust, and ensures legal compliance with data protection standards.
 
-#### 6. **HTTPS Enforcement**
+### 6. **HTTPS Enforcement**
 
 All communications between the client and server will be encrypted using HTTPS with TLS. This ensures data confidentiality and prevents
 man-in-the-middle (MITM) attacks.
@@ -228,4 +228,34 @@ man-in-the-middle (MITM) attacks.
 
 Together, these security measures form a strong foundation for building a secure, user-centric platform that protects users and the 
 system from unauthorized access, data breaches, and other potential threats.
+
+
+## CI/CD Pipeline
+
+CI/CD (Continuous Integration and Continuous Deployment) pipelines are automated workflows that streamline the process of building, 
+testing, and deploying code changes. In the Airbnb Clone project, CI/CD ensures that every change made to the codebase is automatically
+verified and safely deployed, reducing the risk of bugs and making development faster and more reliable.
+
+### Continuous Integration (CI)
+
+Whenever a developer pushes changes to the repository, CI tools automatically run test suites, lint the code, and check for 
+integration issues. This helps catch errors early in the development cycle, before they reach production.
+
+### Continuous Deployment (CD)
+
+After passing CI checks, CD tools automate the deployment of code to staging or production environments. This ensures consistent 
+deployments, reduces manual errors, and allows for rapid iteration and delivery of new features or bug fixes.
+
+### 🛠️ Tools Used
+
+The following tools will be used to implement CI/CD for the Airbnb Clone:
+
+- **GitHub Actions**: Automates workflows such as testing, building Docker images, and deploying to servers or cloud platforms.
+- **Docker**: Ensures consistent environments across development, testing, and production through containerization.
+- **Docker Compose** (for development) and **Docker Swarm or Kubernetes** (for production) can be used to orchestrate services.
+- **Heroku**, **Render**, or **AWS ECS** (optional): Platforms for automated deployment and scaling of Dockerized services.
+
+By integrating CI/CD into the development workflow, the team can maintain high code quality, deploy features faster, and reduce 
+the overhead of manual testing and deployment. This aligns with the project's goals of building a scalable, production-ready backend 
+using modern DevOps practices.
 
