@@ -54,7 +54,7 @@ Represents both guests and hosts.
 * A user can leave multiple reviews.
 * A user can make multiple payments.
 
-### 2. **Property**
+#### 2. **Property**
 
 Represents a place listed by a host.
 
@@ -73,7 +73,7 @@ Represents a place listed by a host.
 * A property can have multiple bookings.
 * A property can have multiple reviews.
 
-### 3. **Booking**
+#### 3. **Booking**
 
 Represents a reservation made by a guest.
 
@@ -91,7 +91,7 @@ Represents a reservation made by a guest.
 * A booking is made by one user (guest).
 * A booking is for one property.
 
-### 4. **Review**
+#### 4. **Review**
 
 Represents user feedback on a property.
 
@@ -107,7 +107,7 @@ Represents user feedback on a property.
 
 * A review is written by one user for one property.
 
-### 5. **Payment**
+#### 5. **Payment**
 
 Represents a transaction made for a booking.
 
