@@ -178,3 +178,54 @@ informed decisions and encouraging hosts to maintain high standards.
 Implements database indexing, query optimization, and caching strategies to improve performance and scalability. This ensures fast 
 data retrieval even as the system scales with more users, properties, and bookings.
 
+
+## API Security
+
+Security is a critical component of the Airbnb Clone project to protect sensitive user data, ensure safe financial transactions, and maintain system integrity. The following measures will be implemented to secure the backend APIs:
+
+#### 1. **Authentication**
+
+All API endpoints will be protected using **token-based authentication** (e.g., JSON Web Tokens - JWT). This ensures that only 
+verified users can access protected resources, such as user profiles, bookings, or property listings.
+
+**Why it matters**: Prevents unauthorized access to user accounts and ensures secure user identification across sessions.
+
+#### 2. **Authorization**
+
+Role-based access control (RBAC) will be enforced to restrict actions based on user roles (e.g., guest vs host). For example, 
+only hosts can create or manage properties, and only users who made a booking can leave a review.
+
+**Why it matters**: Ensures that users can only perform actions they are permitted to, protecting data integrity and enforcing 
+business logic.
+
+#### 3. **Rate Limiting**
+
+Rate limiting will be applied to critical endpoints (e.g., login, registration, booking) to prevent brute force attacks and abuse. 
+Tools like Django Ratelimit or API gateway-level controls will be used.
+
+**Why it matters**: Helps prevent denial-of-service (DoS) attacks, brute force login attempts, and API abuse.
+
+#### 4. **Input Validation & Sanitization**
+
+All user input will be validated and sanitized to guard against common vulnerabilities such as SQL injection, cross-site scripting 
+(XSS), and malicious file uploads.
+
+**Why it matters**: Ensures the system can’t be manipulated or compromised through invalid or dangerous input.
+
+#### 5. **Secure Payments**
+
+Sensitive operations such as payments will be handled through secure, PCI-compliant third-party services (e.g., Stripe or Flutterwave).
+Transaction data will be validated and recorded securely, without storing raw card data.
+
+**Why it matters**: Protects financial information, builds user trust, and ensures legal compliance with data protection standards.
+
+#### 6. **HTTPS Enforcement**
+
+All communications between the client and server will be encrypted using HTTPS with TLS. This ensures data confidentiality and prevents
+man-in-the-middle (MITM) attacks.
+
+**Why it matters**: Protects user credentials, personal data, and payment information in transit.
+
+Together, these security measures form a strong foundation for building a secure, user-centric platform that protects users and the 
+system from unauthorized access, data breaches, and other potential threats.
+
